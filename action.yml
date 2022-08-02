@@ -19,6 +19,8 @@ inputs:
   target:
     required: false
     default: '.'
+  env:
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'

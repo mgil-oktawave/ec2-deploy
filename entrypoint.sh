@@ -2,8 +2,9 @@
 set -o pipefail
 
 CMD="${INPUT_SCRIPT/$'\n'/' && '}"
-env
+VARS="${INPUT_ENV/$'\n'/'; '}"
 
+echo $VARS
 function main() {
   configSSHAccessKey
 
