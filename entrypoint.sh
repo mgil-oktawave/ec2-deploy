@@ -3,7 +3,7 @@ set -o pipefail
 
 #CMD="${INPUT_SCRIPT/$'\n'/' && '}"
 # shellcheck disable=SC2154
-VARS="${INPUT_ENV/$'\n'/'; '}"
+VARS="${INPUT_ENV/$'\n'/' '}"
 
 if [ ! -z "$VARS" ]; then
   echo "1111"
