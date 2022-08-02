@@ -2,10 +2,10 @@
 set -o pipefail
 
 #CMD="${INPUT_SCRIPT/$'\n'/' && '}"
-VARS="${INPUT_ENV/$'\n'/'; '}"
+VARS="export ${INPUT_ENV/$'\n'/'; '}"
 
 if [ ! -z "$VARS" ]; then
-  CMD="export ${VARS}; ${INPUT_SCRIPT/$'\n'/' && '}"
+  CMD="${VARS}; ${INPUT_SCRIPT/$'\n'/' && '}"
 else
   CMD="${INPUT_SCRIPT/$'\n'/' && '}"
 fi
