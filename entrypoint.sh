@@ -5,8 +5,10 @@ CMD="${INPUT_SCRIPT/$'\n'/' && '}"
 VARS="${INPUT_ENV/$'\n'/'; '}"
 
 if [ ! -z $VARS ]; then
+  echo ${CMD}
   CMD="${VARS} ${INPUT_SCRIPT/$'\n'/' && '}"
 else
+  echo ${CMD}
   CMD="${INPUT_SCRIPT/$'\n'/' && '}"
 fi
 
