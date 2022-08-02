@@ -10,7 +10,7 @@ if [ ! -z "$VARS" ]; then
   for var in $VARS; do
     ENV_VARS="$ENV_VARS export $var"
   done
-  CMD="${ENV_VARS} ${INPUT_SCRIPT/$'\n'/' && '}"
+  CMD="${ENV_VARS}; ${INPUT_SCRIPT/$'\n'/' && '}"
 else
   echo "2222"
   CMD="${INPUT_SCRIPT/$'\n'/' && '}"
