@@ -4,8 +4,9 @@ set -o pipefail
 #CMD="${INPUT_SCRIPT/$'\n'/' && '}"
 VARS="${INPUT_ENV/$'\n'/'; '}"
 
-if [ ! -z $VARS ]; then
-  CMD="${VARS} ${INPUT_SCRIPT/$'\n'/' && '}"
+if [ ! -z "$VARS" ]; then
+  echo "111"
+  CMD="${INPUT_SCRIPT/$'\n'/' && '}"
 else
   CMD="${INPUT_SCRIPT/$'\n'/' && '}"
 fi
@@ -17,6 +18,7 @@ function main() {
     copyFiles
   elif [ "$INPUT_ACTION" == "ssh-command" ]; then
     echo "#######"
+    echo "$VARS"
     echo "$CMD"
     sshCommand
     if [ $(echo $?) != 0 ] ; then
