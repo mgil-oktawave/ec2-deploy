@@ -5,8 +5,7 @@ set -o pipefail
 VARS="${INPUT_ENV/$'\n'/'; '}"
 
 if [ ! -z "$VARS" ]; then
-  echo "111"
-  CMD="${VARS}; ${INPUT_SCRIPT/$'\n'/' && '}"
+  CMD="export ${VARS}; ${INPUT_SCRIPT/$'\n'/' && '}"
 else
   CMD="${INPUT_SCRIPT/$'\n'/' && '}"
 fi
