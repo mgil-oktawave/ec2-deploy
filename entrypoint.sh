@@ -2,11 +2,14 @@
 set -o pipefail
 
 #CMD="${INPUT_SCRIPT/$'\n'/' && '}"
-VARS="${/'export' INPUT_ENV/$'\n'/'; '}"
+# shellcheck disable=SC2154
+VARS="${'export' INPUT_ENV/$'\n'/'; '}"
 
 if [ ! -z "$VARS" ]; then
+  echo "1111"
   CMD="${VARS}; ${INPUT_SCRIPT/$'\n'/' && '}"
 else
+  echo "2222"
   CMD="${INPUT_SCRIPT/$'\n'/' && '}"
 fi
 
