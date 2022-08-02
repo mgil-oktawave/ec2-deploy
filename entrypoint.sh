@@ -8,9 +8,9 @@ VARS="${INPUT_ENV/$'\n'/'; '}"
 if [ ! -z "$VARS" ]; then
   echo "1111"
   for var in $VARS; do
-    VARS="export $var"
+    ENV_VARS="$ENV_VARS; export $var"
   done
-  CMD="${VARS} ${INPUT_SCRIPT/$'\n'/' && '}"
+  CMD="${ENV_VARS} ${INPUT_SCRIPT/$'\n'/' && '}"
 else
   echo "2222"
   CMD="${INPUT_SCRIPT/$'\n'/' && '}"
@@ -23,7 +23,7 @@ function main() {
     copyFiles
   elif [ "$INPUT_ACTION" == "ssh-command" ]; then
     echo "#######"
-    echo "$VARS"
+    echo "$ENV_VARS"
     echo "$CMD"
     sshCommand
     if [ $(echo $?) != 0 ] ; then
