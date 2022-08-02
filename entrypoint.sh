@@ -4,13 +4,14 @@ set -o pipefail
 CMD="${INPUT_SCRIPT/$'\n'/' && '}"
 VARS="${INPUT_ENV/$'\n'/'; '}"
 
-echo $VARS
 function main() {
   configSSHAccessKey
 
   if [ "$INPUT_ACTION" == "scp" ]; then
     copyFiles
   elif [ "$INPUT_ACTION" == "ssh-command" ]; then
+    echo "#######"
+    echo $VARS
     sshCommand
     if [ $(echo $?) != 0 ] ; then
       exit 1
