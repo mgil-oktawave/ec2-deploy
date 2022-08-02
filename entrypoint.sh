@@ -3,12 +3,12 @@ set -o pipefail
 
 #CMD="${INPUT_SCRIPT/$'\n'/' && '}"
 # shellcheck disable=SC2154
-VARS="${INPUT_ENV/$'\n'/' '}"
+VARS="${INPUT_ENV/$'\n'/'; '}"
 
 if [ ! -z "$VARS" ]; then
   echo "1111"
   for var in $VARS; do
-    ENV_VARS="$ENV_VARS; export $var"
+    ENV_VARS="$ENV_VARS export $var"
   done
   CMD="${ENV_VARS} ${INPUT_SCRIPT/$'\n'/' && '}"
 else
