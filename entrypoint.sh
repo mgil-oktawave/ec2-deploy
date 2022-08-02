@@ -8,9 +8,9 @@ VARS="${INPUT_ENV/$'\n'/'; '}"
 if [ ! -z "$VARS" ]; then
   echo "1111"
   for var in $VARS; do
-    VARS="$VARS; export $var"
+    VARS="export $var"
   done
-  CMD="${VARS}; ${INPUT_SCRIPT/$'\n'/' && '}"
+  CMD="${VARS} ${INPUT_SCRIPT/$'\n'/' && '}"
 else
   echo "2222"
   CMD="${INPUT_SCRIPT/$'\n'/' && '}"
